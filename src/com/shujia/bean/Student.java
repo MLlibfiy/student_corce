@@ -69,4 +69,7 @@ public class Student {
 				", clazz='" + clazz + '\'' +
 				'}';
 	}
+
+	public Student() {
+	}
 }
