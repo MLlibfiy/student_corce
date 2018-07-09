@@ -6,43 +6,49 @@ package com.shujia.bean;
  *
  */
 public class Score {
-	private String dtudentId;
+	private String studentId;
 	private String courceId ;
 	private int score ;
-	public String getDtudentId() {
-		return dtudentId;
+
+	public Score(String studentId, String courceId, int score) {
+		this.studentId = studentId;
+		this.courceId = courceId;
+		this.score = score;
 	}
-	public void setDtudentId(String dtudentId) {
-		this.dtudentId = dtudentId;
+
+	@Override
+	public String toString() {
+		return "Score{" +
+				"studentId='" + studentId + '\'' +
+				", courceId='" + courceId + '\'' +
+				", score=" + score +
+				'}';
 	}
+
+	public String getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+
 	public String getCourceId() {
 		return courceId;
 	}
+
 	public void setCourceId(String courceId) {
 		this.courceId = courceId;
 	}
 
-	
-
-	@Override
-	public String toString() {
-		return  dtudentId + "," + courceId+ "," + score ;
-	}
-	public Score(String dtudentId, String courceId, int score) {
-		super();
-		this.dtudentId = dtudentId;
-		this.courceId = courceId;
-		this.score = score;
-	}
 	public int getScore() {
 		return score;
 	}
+
 	public void setScore(int score) {
 		this.score = score;
 	}
+
 	public Score() {
-		super();
 	}
-	
-	
 }

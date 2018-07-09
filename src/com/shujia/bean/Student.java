@@ -58,15 +58,15 @@ public class Student {
 		this.gender = gender;
 		this.clazz = clazz;
 	}
+
 	@Override
 	public String toString() {
-		return id + "," + name + "," + age + "," + gender + "," + clazz ;
+		return "Student{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", age=" + age +
+				", gender='" + gender + '\'' +
+				", clazz='" + clazz + '\'' +
+				'}';
 	}
-	public Student() {
-		super();
-	}
-	
-	
-	
-	
 }
