@@ -1,50 +1,28 @@
 package com.shujia.read;
 
-import com.shujia.bean.Cource;
-import com.shujia.bean.Score;
 import com.shujia.bean.Student;
-import com.shujia.compare.SortScore;
-import com.shujia.util.ReadUtil;
+import com.shujia.compare.SortGradeScore;
 import com.shujia.util.Utils;
 
-import java.io.*;
 import java.util.*;
 
 /**
+ *
+ * 按年级排名
  * 1、将数据读取到程序，用集合存起来
  *
  *
  */
-public class mainDemo {
-    public static void main(String[] args) throws Exception {
-        List<Score> scores = ReadUtil.readData("data/score.txt", Score.class);
-
-        /**
-         * 1、计算学生总分
-         *
-         */
-
-        //创建一个hashmap学号对应总分
-        HashMap<String, Integer> hashMap = new HashMap<>();
-
-        //循环分数表，对每个人的分数累加
-        for (Score score : scores) {
-            Integer integer = hashMap.get(score.getStudentId());
-            if(integer==null){
-                hashMap.put(score.getStudentId(),score.getScore());
-            }else {
-                //相同的key后面put会覆盖前面的
-                hashMap.put(score.getStudentId(),integer+score.getScore());
-            }
-        }
-
+public class GradeSort extends Base{
+    public void gradeSort() throws Exception {
         /**
          * 2、关联学生信息表
          *
          * 循环学生信息表，每次去分数表里面查询学生总分
          */
 
-        List<Student> students = ReadUtil.readData("data/students.txt", Student.class);
+        //调用用父类计算总分的方法
+        HashMap<String, Integer> hashMap = super.comSumScore();
         //文科
         ArrayList<String> wen = new ArrayList<>();
         //理科
@@ -64,9 +42,9 @@ public class mainDemo {
         /**
          *
          * 3、按总分降序排序
-                */
-        Collections.sort(wen,new SortScore());
-        Collections.sort(li,new SortScore());
+         */
+        Collections.sort(wen,new SortGradeScore());
+        Collections.sort(li,new SortGradeScore());
         /**
          * 4、增加名次列
          *
@@ -82,6 +60,9 @@ public class mainDemo {
         Utils.saveDataByFile(wen,"outData/文科.txt");
         Utils.saveDataByFile(li,"outData/理科.txt");
     }
+
+
+
 }
 
 

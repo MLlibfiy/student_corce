@@ -2,7 +2,11 @@ package com.shujia.compare;
 
 import java.util.Comparator;
 
-public class SortScore implements Comparator<String> {
+/**
+ *年级排名时用的排序规则
+ *
+ */
+public class SortGradeScore implements Comparator<String> {
     @Override
     public int compare(String o1, String o2) {
         int score1 = Integer.parseInt(o1.split("\t")[4]);
